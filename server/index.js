@@ -53,6 +53,12 @@ app.get('/api/pokemon', (req, res) => {
   res.status(200).json(result);
 });
 
+app.post('/api/pokemon', (req, res) => {
+  //todo: Should validate input
+  db.get('pokemon').push(req.body).write();
+  res.status(204).json(newPokemon);
+});
+
 /**
  * Start the server
  */
