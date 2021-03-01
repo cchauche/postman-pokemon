@@ -4,6 +4,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const fsPromises = require('fs').promises;
 const path = require('path');
+const validateApiKey = require('./validateApiKey');
 
 /**
  * Initialize the JSON DB
@@ -17,6 +18,7 @@ db.defaults({ pokemon: [] }).write();
  */
 
 app.use(express.json());
+app.use('/api', validateApiKey);
 
 /**
  * Server Routes
