@@ -1,5 +1,6 @@
 # Project
 /data/db.json
+/server/apiKey.js
 
 # Logs
 logs
