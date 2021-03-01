@@ -1,0 +1,28 @@
+{
+  "name": "gen1-pokemon",
+  "version": "1.0.0",
+  "description": "Simple API that can provide basic data about Gen 1 Pokemon",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "npx nodemon --inspect --ignore data/ server/index.js",
+    "start": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchauche/gen1-pokemon.git"
+  },
+  "author": "Colin Chauche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchauche/gen1-pokemon/issues"
+  },
+  "homepage": "https://github.com/cchauche/gen1-pokemon#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
