@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const fsPromises = require('fs').promises;
+const path = require('path');
 
 /**
  * Initialize the JSON DB
@@ -57,6 +59,22 @@ app.post('/api/pokemon', (req, res) => {
   //todo: Should validate input
   db.get('pokemon').push(req.body).write();
   res.status(204).json(newPokemon);
+});
+
+app.get('/api/reset', (req, res) => {
+  debugger;
+  let backup = path.join(__dirname, '../data/db-copy.json');
+  let database = path.join(__dirname, '../data/db.json');
+  fsPromises
+    .copyFile(backup, database)
+    .then((result) => {
+      debugger;
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
 });
 
 /**
