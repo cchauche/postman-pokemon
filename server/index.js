@@ -31,6 +31,12 @@ app.delete('/api/pokemon/:number', (req, res) => {
   res.sendStatus(204);
 });
 
+app.put('/api/pokemon/:number', (req, res) => {
+  let number = parseInt(req.params.number);
+  let result = db.get('pokemon').find({ number }).assign(req.body).write();
+  res.status(201).json(result);
+});
+
 app.get('/api/pokemon', (req, res) => {
   var result;
   let { type } = req.query;
