@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "npx nodemon --inspect --ignore data/ server/index.js",
-    "start": "npm start"
+    "start": "npm start",
+    "restoredb": "npx cpy --rename=db.json data/db-copy.json data/"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "lowdb": "^1.0.0"
   },
   "devDependencies": {
+    "cpy-cli": "^3.1.1",
     "nodemon": "^2.0.7"
   }
 }
