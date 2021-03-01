@@ -64,13 +64,11 @@ app.post('/api/pokemon', (req, res) => {
 });
 
 app.get('/api/reset', (req, res) => {
-  debugger;
   let backup = path.join(__dirname, '../data/db-copy.json');
   let database = path.join(__dirname, '../data/db.json');
   fsPromises
     .copyFile(backup, database)
     .then((result) => {
-      debugger;
       res.sendStatus(204);
     })
     .catch((err) => {
