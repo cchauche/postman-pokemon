@@ -25,16 +25,22 @@ app.get('/api/pokemon/:number', (req, res) => {
   res.status(200).json(pokemon);
 });
 
+app.delete('/api/pokemon/:number', (req, res) => {
+  let number = parseInt(req.params.number);
+  db.get('pokemon').remove({ number }).write();
+  res.sendStatus(204);
+});
+
 app.get('/api/pokemon', (req, res) => {
   var result;
   let { type } = req.query;
   if (type) {
     result = db
-    .get('pokemon')
-    .filter((el) => {
-      return el.types.includes(type);
-    })
-    .value();
+      .get('pokemon')
+      .filter((el) => {
+        return el.types.includes(type);
+      })
+      .value();
   } else {
     result = db.get('pokemon').value();
   }
