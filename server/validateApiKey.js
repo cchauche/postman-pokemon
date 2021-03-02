@@ -1,4 +1,4 @@
-const {API_KEY} = process.env.API_KEY || require('./apiKey')
+const API_KEY = process.env.API_KEY || require('./apiKey')
 
 const validateApiKey = (req, res, next) => {
   let reqKey = req.get('api_key');
