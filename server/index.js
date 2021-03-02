@@ -60,7 +60,6 @@ app.get('/api/pokemon', (req, res) => {
 });
 
 app.post('/api/pokemon', (req, res) => {
-  //todo: Should validate input
   db.get('pokemon').push(req.body).write();
   let newPokemon = db.get('pokemon').find({ number: req.body.number }).value();
   res.status(201).json(newPokemon);
