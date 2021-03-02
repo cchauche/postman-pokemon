@@ -1,9 +1,9 @@
-# Postman Workshop Pokemon API
-### This repo is designed to be used for a workshop to teach students how to use [Postman](https://www.postman.com/). 
+# Post-mon Workshop
+### This repo is designed to be used for a workshop to teach students how to use [Postman](https://www.postman.com/)
 
-## Before The Workshop
-- Please sign up for an account at [Postman](https://www.postman.com/).
-- Download and install the [Postman Desktop](https://www.postman.com/downloads/) app for your system.
+## Before Attending The Workshop
+- Please sign up for an account at [Postman](https://www.postman.com/)
+- Download and install the [Postman Desktop](https://www.postman.com/downloads/) app for your system
   * *If you prefer not to download the app you may use Postman's web interface*
 - Clone this repo to your local machine
 
@@ -12,7 +12,7 @@
 ```
 npm install
 ```
-2. Once the installation has we have to initialize the JSON database file by running the command:  
+2. Once the installation is complete we have to initialize the JSON database file by running the command:  
 ```
 npm run restoredb
 ```
@@ -26,7 +26,7 @@ npm run restoredb
 # Postman Workshop
 ## Creating your first request
 - Make a ```GET``` request to ```/api/pokemon``` and call it 'Get All Pokemon'
-  * Add a query parameter called 'type' and use the value 'Psychic'.
+  * Add a query parameter called 'type' and use the value 'Psychic'
 ## Make more requests
 - Make a ```GET``` request to ```/api/pokemon/:number```
   * Notice how its different when you add a path variable
@@ -54,14 +54,14 @@ npm run restoredb
   }
   ```
 - Make a ```GET``` request to ```/api/reset```
-  * This endpoint restores the pokemon database back to the original 151 pokemon.
+  * This endpoint restores the pokemon database back to the original 151 pokemon
 ## Adding shared authentication to your quests
 - Update Server Code
-  1. Follow the instructions in ```server/apiKey.example.js``` to create an API key for your server.
+  1. Follow the instructions in ```server/apiKey.example.js``` to create an API key for your server
   2. In ```server/index.js``` uncomment line 23
   3. The server should restart automatically.  You can test if the API key validation is working by sending one of your previously made requests.  They should get an error code with a message along the lines of *'Invalid API key!'*
 - Add your api_key to your ```GET /api/pokemon``` request
-- Use the authenticaion option on your pokemon collection so all your requests share the same authentication information.
+- Use the authenticaion option on your pokemon collection so all your requests share the same authentication information
 
 ## Using variables to hide sensitive formation
 - Instead of hard coding the api key use a global variable
