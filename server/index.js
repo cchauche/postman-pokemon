@@ -60,7 +60,8 @@ app.get('/api/pokemon', (req, res) => {
 app.post('/api/pokemon', (req, res) => {
   //todo: Should validate input
   db.get('pokemon').push(req.body).write();
-  res.status(204).json(newPokemon);
+  let newPokemon = db.get('pokemon').find({ number: req.body.number }).value();
+  res.status(201).json(newPokemon);
 });
 
 app.get('/api/reset', (req, res) => {
@@ -69,6 +70,7 @@ app.get('/api/reset', (req, res) => {
   fsPromises
     .copyFile(backup, database)
     .then((result) => {
+      db.read();
       res.sendStatus(204);
     })
     .catch((err) => {
