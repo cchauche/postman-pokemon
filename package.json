@@ -21,7 +21,8 @@
   "homepage": "https://github.com/cchauche/gen1-pokemon#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "lowdb": "^1.0.0"
+    "lowdb": "^1.0.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
