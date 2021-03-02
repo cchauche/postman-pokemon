@@ -3,6 +3,4 @@
 // A default is provided here but I'd recommend you generate
 // a new value.  You can use this website to generate a new key
 // https://randomkeygen.com/
-module.exports = {
-  API_KEY: 'Pie8DFQbNJKCXrv7Ual3r6TLckkpGKbr'
-}
+module.exports = 'Pie8DFQbNJKCXrv7Ual3r6TLckkpGKbr'
