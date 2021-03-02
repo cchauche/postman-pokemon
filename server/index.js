@@ -25,7 +25,7 @@ app.use('/api', validateApiKey);
  */
 app.get('/api/pokemon/:number', (req, res) => {
   let number = parseInt(req.params.number);
-  let pokemon = db.get('pokemon').find({ number }).value();
+  let pokemon = db.get('pokemon').find({ number }).value() || [];
   res.status(200).json(pokemon);
 });
 
@@ -54,6 +54,7 @@ app.get('/api/pokemon', (req, res) => {
   } else {
     result = db.get('pokemon').value();
   }
+  result = result || [];
   res.status(200).json(result);
 });
 
