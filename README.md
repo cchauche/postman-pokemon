@@ -24,6 +24,23 @@ npm run restoredb
 4. You should see output on your command line informing you of the URL the server is running on. By default it is `http://localhost:3000`
 
 # Postman Workshop
+
+[Creating your first request](#creating-your-first-request)
+
+[Make more requests](#make-more-requests)
+
+[Adding shared authentication to your requests](#adding-shared-authentication-to-your-requests)
+
+[Using variables to hide sensitive information](#using-variables-to-hide-sensitive-information)
+
+[Using different environments](#using-different-environments)
+
+[Creating tests](#creating-tests)
+
+[Creating a mock server](#creating-a-mock-server)
+
+[More Exploration](#more-exploration)
+
 ## Creating your first request
 - Create a new workspace and call it 'Postman Pokemon'
 - Create a new collection and call it 'Pokemon'
@@ -85,7 +102,7 @@ npm run restoredb
   * For 'apiKey' use the API key you created for your server
 - Refactor your requests to use the new variables
   * You can now ust `{{host}}` instead of `http://localhost:3000` in your request URL
-  * Don't forget to replace the authentication 'Value' field with your new envrionment variable `{{apiKey}}`
+  * Don't forget to replace the authentication 'Value' field with your new environment variable `{{apiKey}}`
 - Make a deployed environment with two variables 'host and 'apiKey'
   * Set the variables to suit the deployed server
 ## Creating tests
