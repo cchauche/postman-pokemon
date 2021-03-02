@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Simple API that can provide basic data about Gen 1 Pokemon",
   "main": "server/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "npx nodemon --inspect --ignore data/ server/index.js",
