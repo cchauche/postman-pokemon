@@ -70,7 +70,7 @@ npm run restoredb
   ``` JSON
   {
     "name":"Knot-A-Mon",
-    "types": ["Normal"],
+    "types": ["Normal"]
   }
   ```
 - Make a new `GET` request to `/api/reset`

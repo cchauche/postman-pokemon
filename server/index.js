@@ -20,7 +20,7 @@ db.defaults({ pokemon: [] }).write();
 
 app.use(express.json());
 app.use(morgan('dev'));
-app.use('/api', validateApiKey);
+// app.use('/api', validateApiKey);
 
 /**
  * Server Routes
@@ -60,7 +60,9 @@ app.get('/api/pokemon', (req, res) => {
 });
 
 app.post('/api/pokemon', (req, res) => {
-  db.get('pokemon').push(req.body).write();
+  db.get('pokemon').push(req.body).sort((a,b)=>{
+    return a.number - b.number;
+  }).write();
   let newPokemon = db.get('pokemon').find({ number: req.body.number }).value();
   res.status(201).json(newPokemon);
 });
