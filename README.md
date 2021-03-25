@@ -1,7 +1,7 @@
 # Post-Mon Workshop
 ### This repo is designed to be used for a workshop to teach students how to use [Postman](https://www.postman.com/)
 
-## Before Attending The Workshop
+## Before Starting
 - Please sign up for an account at [Postman](https://www.postman.com/)
 - Download and install the [Postman Desktop](https://www.postman.com/downloads/) app for your system
   * *If you prefer not to download the app you may use Postman's web interface*
@@ -101,7 +101,7 @@ npm run restoredb
   * For 'host' use the host address of your local server - `http://localhost:3000`
   * For 'apiKey' use the API key you created for your server
 - Refactor your requests to use the new variables
-  * You can now ust `{{host}}` instead of `http://localhost:3000` in your request URL
+  * You can now use `{{host}}` instead of `http://localhost:3000` in your request URL
   * Don't forget to replace the authentication 'Value' field with your new environment variable `{{apiKey}}`
 - Make a deployed environment with two variables 'host and 'apiKey'
   * Set the variables to suit the deployed server
