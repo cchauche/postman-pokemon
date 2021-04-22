@@ -27,15 +27,24 @@ This repo is designed to be used in tandem with a workshop/live demo for student
 
 - [API Reference](#api-reference)
 
-  -[Local Pokemon API](#local-pokemon-api)
+  - [Local Pokemon API](#local-pokemon-api)
 
-  -[Deployed Pokemon API](#deployed-pokemon-api)
+  - [Deployed Pokemon API](#deployed-pokemon-api)
 
 ## Requirements
 - Please sign up for an account at [Postman](https://www.postman.com/)
 - Download and install the [Postman Desktop](https://www.postman.com/downloads/) app for your system
   * *If you prefer not to download the app you may use Postman's web interface*
 - Node v14.0.0 or greater
+
+## What is Postman?
+
+Postman is a tool designed to help test and build APIs. It has a ton of features but for our purposes we are most interested in Postman's tools for generating HTTP requests and displaying the result/response of those requests.  Postman makes it easy to create a new request, assign it a Method (GET, POST etc.) and a URL then within seconds you can be sending an HTTP request and see a nicely formatted output of the response.  Postman also supports adding all kinds of parameters and gives you an easy interface for modifying/adding/subtracting parameters.
+
+### Why use Postman?
+When you are working on a server or building out some kind of API its essential to be able to test out your routes quickly.  Postman gives you simple interface to generate HTTP requests and test out your routes.  It also saves the requests so you can easily come back to your old requests over and over again as your project develops.
+
+It is also an easy and fast way to test out a new API that you may not have used before. Since there is no coding involved you can just open up a new request in Postman and start testing out the various endpoints of an API you aren't familiar with.
 
 ## Start Local Pokemon Server
 This repo includes a simple server with a RESTful API that interacts with a database that contains the 151 original Pokemon. To practice using Postman we are going to create requests for this Pokemon API.
@@ -50,6 +59,8 @@ npm install
  ```
 3. This will start the repo using *nodemon* in debugger mode so Chrome's DevTools can be attached
 4. You should see output on your command line informing you of the URL the server is running on. By default it is `http://localhost:3000`
+
+Now lets start testing out our server with Postman!
 
 ## Creating your first request
 In Postman
