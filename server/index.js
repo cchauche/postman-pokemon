@@ -31,18 +31,6 @@ app.get('/api/pokemon/:number', (req, res) => {
   res.status(200).json(pokemon);
 });
 
-app.delete('/api/pokemon/:number', (req, res) => {
-  let number = parseInt(req.params.number);
-  db.get('pokemon').remove({ number }).write();
-  res.sendStatus(204);
-});
-
-app.put('/api/pokemon/:number', (req, res) => {
-  let number = parseInt(req.params.number);
-  let result = db.get('pokemon').find({ number }).assign(req.body).write();
-  res.status(201).json(result);
-});
-
 app.get('/api/pokemon', (req, res) => {
   var result;
   let { type } = req.query;
@@ -60,27 +48,20 @@ app.get('/api/pokemon', (req, res) => {
   res.status(200).json(result);
 });
 
-app.post('/api/pokemon', (req, res) => {
-  //todo: Should validate input
-  db.get('pokemon').push(req.body).write();
-  let newPokemon = db.get('pokemon').find({ number: req.body.number }).value();
-  res.status(201).json(newPokemon);
-});
-
-app.get('/api/reset', (req, res) => {
-  let backup = path.join(__dirname, '../data/db-copy.json');
-  let database = path.join(__dirname, '../data/db.json');
-  fsPromises
-    .copyFile(backup, database)
-    .then((result) => {
-      db.read();
-      res.sendStatus(204);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-});
+// app.get('/api/reset', (req, res) => {
+//   let backup = path.join(__dirname, '../data/db-copy.json');
+//   let database = path.join(__dirname, '../data/db.json');
+//   fsPromises
+//     .copyFile(backup, database)
+//     .then((result) => {
+//       db.read();
+//       res.sendStatus(204);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// });
 
 /**
  * Start the server
