@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "npx nodemon --inspect --ignore data/ server/index.js",
     "start": "node server/index.js",
-    "restoredb": "npx cpy --rename=db.json data/db-copy.json data/"
+    "restoredb": "npx cpy --rename=db.json data/db-copy.json data/",
+    "postinstall": "npx cpy --rename=db.json data/db-copy.json data/"
   },
   "repository": {
     "type": "git",
