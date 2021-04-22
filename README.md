@@ -1,51 +1,63 @@
 # Post-Mon Workshop
-### This repo is designed to be used for a workshop to teach students how to use [Postman](https://www.postman.com/)
+This repo is designed to be used in tandem with a workshop/live demo for students on how to use [Postman](https://www.postman.com/)
 
-## Before Starting
+## Table of Contents
+
+- [Requirements](#requirements)
+
+- [What is Postman?](#what-is-postman?)
+
+- [Start Local Pokemon Server](#start-local-pokemon-server)
+
+- [Creating your first request](#creating-your-first-request)
+
+- [Make more requests](#make-more-requests)
+
+- [Adding shared authentication to your requests](#adding-shared-authentication-to-your-requests)
+
+- [Using variables to hide sensitive information](#using-variables-to-hide-sensitive-information)
+
+- [Using different environments](#using-different-environments)
+
+- [Creating tests](#creating-tests)
+
+- [Creating a mock server](#creating-a-mock-server)
+
+- [More Exploration](#more-exploration)
+
+- [API Reference](#api-reference)
+
+  -[Local Pokemon API](#local-pokemon-api)
+
+  -[Deployed Pokemon API](#deployed-pokemon-api)
+
+## Requirements
 - Please sign up for an account at [Postman](https://www.postman.com/)
 - Download and install the [Postman Desktop](https://www.postman.com/downloads/) app for your system
   * *If you prefer not to download the app you may use Postman's web interface*
-- Clone this repo to your local machine
+- Node v14.0.0 or greater
 
-## How to Run this Repo
+## Start Local Pokemon Server
+This repo includes a simple server with a RESTful API that interacts with a database that contains the 151 original Pokemon. To practice using Postman we are going to create requests for this Pokemon API.
+
 1. From the repo's root directory enter the command:  
 ```
 npm install
-```
-2. Once the installation is complete we have to initialize the JSON database file by running the command:  
-```
-npm run restoredb
 ```
 2. Next start the server with the command:  
  ```
  npm run start-dev
  ```
-3. This will start the repo using *nodemon* in debug mode so chromes dev-tools can be attached
+3. This will start the repo using *nodemon* in debugger mode so Chrome's DevTools can be attached
 4. You should see output on your command line informing you of the URL the server is running on. By default it is `http://localhost:3000`
 
-# Postman Workshop
-
-[Creating your first request](#creating-your-first-request)
-
-[Make more requests](#make-more-requests)
-
-[Adding shared authentication to your requests](#adding-shared-authentication-to-your-requests)
-
-[Using variables to hide sensitive information](#using-variables-to-hide-sensitive-information)
-
-[Using different environments](#using-different-environments)
-
-[Creating tests](#creating-tests)
-
-[Creating a mock server](#creating-a-mock-server)
-
-[More Exploration](#more-exploration)
-
 ## Creating your first request
+In Postman
 - Create a new workspace and call it 'Postman Pokemon'
 - Create a new collection and call it 'Pokemon'
 - Inside the 'Pokemon' collection add a new `GET` request to `/api/pokemon` and call it 'Get All Pokemon'. Don't forget to include the host `http://localhost:3000` in all your request URLs
   * After trying out the request add a query parameter called 'type' and use the value 'Psychic'
+> Keeping your requests organized in folders is a good idea because it can help simplify adding authentication and you might want to revisit some of your requests later.
 ## Make more requests
 - Make a `GET` request to `/api/pokemon/:number`
   * Notice the different in adding a query parameters vs a path variable
@@ -122,3 +134,9 @@ npm run restoredb
 - [Postman Variables Quick Start](https://learning.postman.com/docs/sending-requests/variables/)
 - [Postman Environment Quick Start](https://learning.postman.com/docs/sending-requests/managing-environments/)
 - [Postman Writing Tests](https://learning.postman.com/docs/writing-scripts/test-scripts/)
+
+# API Reference
+
+## Local Pokemon API
+
+## Deployed Pokemon API
