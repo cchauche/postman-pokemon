@@ -2,6 +2,8 @@
 
 This repo is designed to be used in tandem with a workshop/live demo for students on how to use [Postman](https://www.postman.com/)
 
+I've also published the [completed request collection](https://www.postman.com/altimetry-astronomer-34778570/workspace/public-postman-pokemon/overview) for this workshop. You can fork the collection and play around with it yourself
+
 ## Table of Contents
 
 - [Requirements](#requirements)
@@ -74,7 +76,10 @@ In Postman
 - Create a new collection and call it 'Pokemon'
 - Inside the 'Pokemon' collection add a new `GET` request to `/api/pokemon` and call it 'Get All Pokemon'. Don't forget to include the host `http://localhost:3000` in all your request URLs
   - After trying out the request add a query parameter called 'type' and use the value 'Psychic'
-    > Keeping your requests organized in folders is a good idea because it can help simplify adding authentication and you might want to revisit some of your requests later.
+  > Keeping your requests organized in folders is a good idea because it can help simplify adding authentication and you might want to revisit some of your requests later.
+
+![Get Pokemon Request](./readme_images/first-get-request.png)
+Your GET request should look like this in Postman. Note the check box next to 'type' can be used to add/remove that parameter from the request.
 
 ## Make more requests
 
@@ -107,54 +112,80 @@ In Postman
 - Make a new `GET` request to `/api/reset`
   - This endpoint restores the Pokemon database back to the original 151 Pokemon
 
+|  |  | 
+| --- | --- |
+| ![Pokemon Request Folder](./readme_images/request-folder.png) | You should now have a collection with 6 requests that looks like this |
 ## Adding shared authentication to your requests
 
-- Update Server Code
-  1. Follow the instructions in `server/apiKey.example.js` to create an API key for your server
-  2. In `server/index.js` uncomment line 23 then save all your changes. The server should restart automatically since nodemon is watching the files
-  3. You can test if the API key validation is working by sending one of your previously made requests. The request's response should have an error code with a message along the lines of _'Invalid API key!'_
-- Add your API key to your existing `GET /api/pokemon` request
-  - The server is looking for a header parameter key of 'api_key' and a value matching the string you entered in the `server/apiKey.js` file
-  - You can add header parameters in the 'Headers' tab of a request
-- Add authentication to the entire 'Pokemon' collection so you don't have to edit the API key in each request.
-  - Select the 'Pokemon' collection and navigate to the 'Authorization' tab
-  - In the 'Type' dropdown select 'API Key'
-  - For the 'Key' field enter 'api_key'
-  - For the 'Value' field enter your API Key
-  - From the 'Add to' dropdown select 'Header'
+### Update Server Code
+1. In `server/index.js` uncomment line 23 then save all your changes. The server should restart automatically since nodemon is watching the files
+2. You can test if the API key validation is working by sending one of your previously made requests. The request's response should have an error code with a message along the lines of _'Invalid API key!'_
 
-## Using variables to hide sensitive information
+The API is now secured with an API key. The key is in `server/apiKey.js`
+
+### Add the API key to your existing `GET /api/pokemon` request
+The server is looking for a header parameter key of 'api_key' and a value:
+  ```
+  F8CHMnEeBZh4ph0DuiWbbrT1ZRlGkszf
+  ```
+> You can add header parameters in the 'Auth' tab of a request
+
+![API Key Request Header](./readme_images/request-header.png)
+After you have tested this change the 'Type' dropdown back to 'Inherit auth from parent'
+### Add authentication to the entire 'Pokemon' collection
+This lets you apply authentication to all requests inside the collection so you don't have to adjust each request.
+- Select the collection with all your requests and navigate to the 'Authorization' tab
+- Just like above fill out the key and value like we did above.
+
+![Collection Authorization](./readme_images/collection-auth.png)
+
+Now all the requests in the collection have the necessary authentication for our server.
+
+## Using Global Variables
 
 - Instead of hard coding the api key use a global variable
-  - Create a global variable and call it 'pmApiKey'
-  - Navigate back to the 'Authorization' tab of the 'Pokemon' collection and replace the contents of the 'Value' field with `{{pmApiKey}}`
+  - [Create a global](https://learning.postman.com/docs/sending-requests/variables/#variables-quick-start) variable and call it 'pmApiKey'
+  - Navigate back to the 'Authorization' tab of the collection and replace the contents of the 'Value' field with `{{pmApiKey}}`
   - The double curly brackets is how you use variables in Postman
 
-## Using different environments
+You can store all kinds of things as global variables not just API keys.
+## Using Different Environments
 
-- Change the host address of your `GET /api/pokemon` request to the deployed Pokemon API at https://gen1-pokemon.herokuapp.com (Ask me for the API key)
+We have a deployed paired down version of our server running on Heroku and we want to be able to test those request as well.  It would be great to not have to re-write our requests and instead just tell Postman to send them to a different host. This is where environments can be helpful
+
 - Make a local environment with two variables 'host' and 'apiKey'
   - For 'host' use the host address of your local server - `http://localhost:3000`
   - For 'apiKey' use the API key you created for your server
+![Local Environment](./readme_images/local-environment.png)
 - Refactor your requests to use the new variables
   - You can now use `{{host}}` instead of `http://localhost:3000` in your request URL
-  - Don't forget to replace the authentication 'Value' field with your new environment variable `{{apiKey}}`
-- Make a deployed environment with two variables 'host and 'apiKey'
-  - Set the variables to suit the deployed server
+  ![](./readme_images/using-host-variable.png)
+  - Don't forget to replace the authentication 'Value' field in the collection with your new environment variable `{{apiKey}}`
+  ![Environment Variable Auth](./readme_images/env-variable-auth.png)
+- Make a new environment called 'deployed' with two variables 'host and 'apiKey'
+  - host should be: `https://gen1-pokemon.herokuapp.com`
+  - apiKey should be: `So5aVM3sYecOwHrjSp67sKUFDXtvVYF6`
 
+Now you can easily swap between the local and deployed environments using the drop down in the top right of the Postman window.  
 ## Creating tests
+Postman lets you easily create tests for your requests.
 
 - Switch back to your local environment in Postman
 - Send a `GET /api/reset` request to restore the DB back to its original state
 - In your `GET /api/pokemon` request add a test that confirms the response message is 200
 - Add a second test that confirms the response is an array of length 151
+>Postman has a bunch of handy code snippets that you can use to base your tests off of. Make use of those snippets!
 
+![Test Example](./readme_images/test-example.png)
 ## Creating a mock server
 
-- In Postman create a new mock server in your Pokemon workspace
+- In Postman [create a new mock server](./readme_images/env-variable-auth.png) from your Pokemon collection
 - Create a new environment called 'mock' with one variable 'host' which is the address of your new mock server.
-- Make a new example response from your `GET /api/pokemon` request
+![Mock Environment](./readme_images/mock-env.png)
+- Make a [new example response](./readme_images/env-variable-auth.png) from your `GET /api/pokemon` request
+![Add Mock Example Request](./readme_images/add-mock-example.png)
 - Change to the 'mock' environment and test if you get the example response
+![Mock Response](./readme_images/mock-response.png)
 
 # More Exploration
 
@@ -163,6 +194,7 @@ In Postman
 - [Postman Variables Quick Start](https://learning.postman.com/docs/sending-requests/variables/)
 - [Postman Environment Quick Start](https://learning.postman.com/docs/sending-requests/managing-environments/)
 - [Postman Writing Tests](https://learning.postman.com/docs/writing-scripts/test-scripts/)
+- [Postman Setting Up Mock Servers](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/)
 
 # API Reference
 
