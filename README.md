@@ -227,7 +227,6 @@ Parameters
 | Parameters | Type   | In    | Description                                         |
 | ---------- | ------ | ----- | --------------------------------------------------- |
 | type       | string | query | Specify a Pokemon type ex "Psychic". Case sensitive |
-|            |        |       |                                                     |
 
 Response
 
@@ -266,7 +265,6 @@ Parameters
 | Parameters | Type   | In   | Description                         |
 | ---------- | ------ | ---- | ----------------------------------- |
 | type       | number | path | Return Pokemon with matching number |
-|            |        |      |                                     |
 
 Response
 
