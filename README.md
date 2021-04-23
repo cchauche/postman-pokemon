@@ -12,19 +12,19 @@ I've also published the [completed request collection](https://www.postman.com/a
 
 - [Start Local Pokemon Server](#start-local-pokemon-server)
 
-- [Creating your first request](#creating-your-first-request)
+- [Creating Your First Request](#creating-your-first-request)
 
-- [Make more requests](#make-more-requests)
+- [Make More Requests](#make-more-requests)
 
-- [Adding shared authentication to your requests](#adding-shared-authentication-to-your-requests)
+- [Adding Shared Authentication](#adding-shared-authentication)
 
-- [Using variables to hide sensitive information](#using-variables-to-hide-sensitive-information)
+- [Using Global Variables](#using-global-variables)
 
-- [Using different environments](#using-different-environments)
+- [Using Different Environments](#using-different-environments)
 
-- [Creating tests](#creating-tests)
+- [Creating Tests](#creating-tests)
 
-- [Creating a mock server](#creating-a-mock-server)
+- [Creating A Mock Server](#creating-a-mock-server)
 
 - [More Exploration](#more-exploration)
 
@@ -68,7 +68,7 @@ npm run start-dev
 
 Now lets start testing out our server with Postman!
 
-## Creating your first request
+## Creating Your First Request
 
 In Postman
 
@@ -81,7 +81,7 @@ In Postman
 ![Get Pokemon Request](./readme_images/first-get-request.png)
 Your GET request should look like this in Postman. Note the check box next to 'type' can be used to add/remove that parameter from the request.
 
-## Make more requests
+## Make More Requests
 
 - Make a `GET` request to `/api/pokemon/:number`
   - Notice the different in adding a query parameters vs a path variable
@@ -115,7 +115,7 @@ Your GET request should look like this in Postman. Note the check box next to 't
 |  |  | 
 | --- | --- |
 | ![Pokemon Request Folder](./readme_images/request-folder.png) | You should now have a collection with 6 requests that looks like this |
-## Adding shared authentication to your requests
+## Adding Shared Authentication
 
 ### Update Server Code
 1. In `server/index.js` uncomment line 23 then save all your changes. The server should restart automatically since nodemon is watching the files
@@ -167,7 +167,7 @@ We have a deployed paired down version of our server running on Heroku and we wa
   - apiKey should be: `So5aVM3sYecOwHrjSp67sKUFDXtvVYF6`
 
 Now you can easily swap between the local and deployed environments using the drop down in the top right of the Postman window.  
-## Creating tests
+## Creating Tests
 Postman lets you easily create tests for your requests.
 
 - Switch back to your local environment in Postman
@@ -177,7 +177,7 @@ Postman lets you easily create tests for your requests.
 >Postman has a bunch of handy code snippets that you can use to base your tests off of. Make use of those snippets!
 
 ![Test Example](./readme_images/test-example.png)
-## Creating a mock server
+## Creating A Mock Server
 
 - In Postman [create a new mock server](./readme_images/env-variable-auth.png) from your Pokemon collection
 - Create a new environment called 'mock' with one variable 'host' which is the address of your new mock server.
